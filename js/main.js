@@ -11,7 +11,7 @@ let entryChoiceUser = "";
 //
 //
 let menuHangman = () => {
-    prompt("Menu :\n" + "p : play the game\n" + "r : rules\n" + "e : exit the game");
+    return prompt("Menu :\n" + "p : play the game\n" + "r : rules\n" + "e : exit the game");
 }
 let menuChoiceUser = (EntryUserChoice) =>{
     if (EntryUserChoice === "p"){
@@ -34,6 +34,8 @@ let playThisGame = () =>{
         }
         else if (restOfUnderscore(wordToFind) !== true) {
             alert("you win")
+            entryChoiceUser = menuHangman();
+            menuChoiceUser(entryChoiceUser);
         }
     }
 }
@@ -88,9 +90,6 @@ let restOfUnderscore = (userWord) => {
 //------code------
 //
 //
-entryChoiceUser = menuHangman();
-menuChoiceUser(entryChoiceUser);
-
 let computerWord = choiceComputer(); // computerWord store choiceComputer
 console.log(computerWord);
 
@@ -101,7 +100,10 @@ let wordToFind = computerWord.split(""); // wordUser
 //console.log(wordToFind);
 
 replaceByUnderscore(wordToFind); // change letter to underscore
-playThisGame();
+entryChoiceUser= menuHangman();
+console.log(entryChoiceUser);
+menuChoiceUser(entryChoiceUser);
+//playThisGame();
 /* let playThisGame = () =>{
 while(score !==0 && restOfUnderscore(wordToFind) === true) {
     letterChooseByUser = prompt("Choose a letter.\nYour score is " + score + "\n" + wordToFind);
