@@ -67,8 +67,8 @@ replaceUnderscore(wordToFind); // change letter to underscore
 
 while(score !==0 && winner(wordToFind) === true) {
     letter = prompt("Choose a letter.\nYour score is " + score + "\n" + wordToFind);
+    letter = letter.toLowerCase();
     console.log(addLetterUser(wordToFind));
     console.log(winner(wordToFind));
     score = scores(score);
 }
-
