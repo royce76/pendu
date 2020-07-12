@@ -22,7 +22,7 @@
 
 - ## TO PLAY
 
->> Go on the link [ADVANCED SHIFUMI](https://royce76.github.io/pendu/).
+>> Go on the link [Hangman game](https://royce76.github.io/pendu/).
 
 - ## COMMITS
 
