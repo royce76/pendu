@@ -14,6 +14,15 @@ let choiceComputer = () => {
     return wordGame[index]
 }
 
+let replaceUnderscore = (replace) => {
+    for(let i = 0;i<replace.length;i++) {
+        if(arrayWordComputer[i] !== letter) {
+            replace[i] = "_" + " ";
+        }
+    }
+    return replace
+}
+
 let scores = (datascore) => {
     if(arrayWordComputer.includes(letter)) { // score
         return datascore
@@ -23,13 +32,10 @@ let scores = (datascore) => {
     }
 }
 
-let addLetterUser = (wordUser) => {
-    for(let h = 0;h<wordToFind.length;h++) { // transform wordToFind in underscore
-        if(arrayWordComputer[h] !== letter) {
-            wordUser[h] = "_" + " ";
-        }
-        else {
-            wordUser[h] = letter; // add letter to wordToFind
+addLetterUser = (wordUser) => {
+    for(let h = 0;h<wordUser.length;h++) { // transform wordToFind in underscore
+        if(arrayWordComputer[h] === letter) {
+            wordUser[h] = letter;
         }
     }
     return wordUser
@@ -48,32 +54,11 @@ console.log(arrayWordComputer);
 let wordToFind = computerWord.split(""); // wordUser
 console.log(wordToFind);
 
-while(score > 0 ) {
-    addLetterUser(wordToFind);
+replaceUnderscore(wordToFind); // change letter to underscore
+
+while(score !== 0 && wordToFind !== computerWord ) {
     letter = prompt("Choose a letter.\nYour score is " + score + "\n" + wordToFind);
+    addLetterUser(wordToFind);
     score = scores(score);
 }
-//
-//
-//
-//------test------
-//
-//
-//alert("your score is " + goodLetter(score) + "\n" + replaceLetter());
-/* let replaceLetter = () => {
-    for(let j = 0;j<transforms.length;j++) {
-        if(arrayComputer[j] === letter) {
-            transforms[j] = letter;
-        }
-    }
-    return transforms
-}
 
-let replaceUnderscore = () => {
-    for(let i = 0;i<transforms.length;i++) {
-        if(arrayComputer[i] !== letter) {
-            transforms[i] = "_" + " ";
-        }
-    }
-    return transforms
-} */
