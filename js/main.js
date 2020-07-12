@@ -17,9 +17,18 @@ let menuChoiceUser = (EntryUserChoice) =>{
     if (EntryUserChoice === "p"){
         return playThisGame();
     }
+    else if (entryChoiceUser === "r"){
+        return showrules();
+    }
+    else if (entryChoiceUser === "e"){
+        return false
+    }
+    else {
+        return alert("wrong choice");
+    }
 }
 
-let playThisGame = () =>{
+let playThisGame = () => {
     while(score !==0 && restOfUnderscore(wordToFind) === true) {
         letterChooseByUser = prompt("Choose a letter.\nYour score is " + score + "\n" + wordToFind);
         letterChooseByUser = letterChooseByUser.toLowerCase();
@@ -28,17 +37,14 @@ let playThisGame = () =>{
         restOfUnderscore(wordToFind); 
         score = computeScores(score);
         if(score === 0) {
-            alert("you loose")
-            entryChoiceUser = menuHangman();
-            menuChoiceUser(entryChoiceUser);
+            alert("you loose");
         }
         else if (restOfUnderscore(wordToFind) !== true) {
-            alert("you win")
-            entryChoiceUser = menuHangman();
-            menuChoiceUser(entryChoiceUser);
+            alert("you win");
         }
     }
 }
+
 let sizeLetterUser = (letterUserEntry) => {
     if (letterUserEntry.length !== 1){
         alert("Please, choose one letter, you keep your last score");
@@ -102,21 +108,7 @@ let wordToFind = computerWord.split(""); // wordUser
 replaceByUnderscore(wordToFind); // change letter to underscore
 entryChoiceUser= menuHangman();
 console.log(entryChoiceUser);
-menuChoiceUser(entryChoiceUser);
-//playThisGame();
-/* let playThisGame = () =>{
-while(score !==0 && restOfUnderscore(wordToFind) === true) {
-    letterChooseByUser = prompt("Choose a letter.\nYour score is " + score + "\n" + wordToFind);
-    letterChooseByUser = letterChooseByUser.toLowerCase();
-    sizeLetterUser(letterChooseByUser);
-    addLetterUser(wordToFind);
-    restOfUnderscore(wordToFind); 
-    score = computeScores(score);
-    if(score === 0) {
-        alert("you loose")
-    }
-    else if (restOfUnderscore(wordToFind) !== true) {
-        alert("you win")
-    }
+while(entryChoiceUser !== "p" && entryChoiceUser !== "r" && entryChoiceUser !== "e") {
+    menuChoiceUser(entryChoiceUser);
 }
-} */
+ 
