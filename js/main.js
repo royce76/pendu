@@ -62,8 +62,13 @@ let restOfUnderscore = (userWord) => {
 //
 let computerWord = choiceComputer(); // computerWord store choiceComputer
 console.log(computerWord);
+
 let ComputerWordInArray = computerWord.split(""); //  arrayWordComputer compare letters
+//console.log(arrayWordComputer);
+
 let wordToFind = computerWord.split(""); // wordUser
+//console.log(wordToFind);
+
 replaceByUnderscore(wordToFind); // change letter to underscore
 
 while(score !==0 && restOfUnderscore(wordToFind) === true) {
