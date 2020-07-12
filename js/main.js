@@ -3,7 +3,7 @@
 //
 let wordGame = ["palourde","attribut","bouton","canard"];
 let score = 7 ;
-let letter = [];
+let letterChooseByUser = [];
 //
 //
 //------fucntions------
@@ -14,17 +14,17 @@ let choiceComputer = () => {
     return wordGame[index]
 }
 
-let replaceUnderscore = (replace) => {
+let replaceByUnderscore = (replace) => {
     for(let i = 0;i<replace.length;i++) {
-        if(arrayWordComputer[i] !== letter) {
+        if(ComputerWordInArray[i] !== letterChooseByUser) {
             replace[i] = "_" + " ";
         }
     }
     return replace
 }
 
-let scores = (datascore) => {
-    if(arrayWordComputer.includes(letter)) { // score
+let computeScores = (datascore) => {
+    if(ComputerWordInArray.includes(letterChooseByUser)) { // score
         return datascore
     }
     else {
@@ -34,19 +34,16 @@ let scores = (datascore) => {
 
 let addLetterUser = (wordUser) => {
     for(let h = 0;h<wordUser.length;h++) { // transform wordToFind in underscore
-        if(arrayWordComputer[h] === letter) {
-            wordUser[h] = letter;
+        if(ComputerWordInArray[h] === letterChooseByUser) {
+            wordUser[h] = letterChooseByUser;
         }
     }
     return wordUser
 }
 
-let winner = (userWord) => {
+let restOfUnderscore = (userWord) => {
     if(userWord.includes("_"+" ")) {
         return true
-    }
-    else {
-        return alert("You win")
     }
 }
 //
@@ -57,18 +54,24 @@ let winner = (userWord) => {
 let computerWord = choiceComputer(); // computerWord store choiceComputer
 console.log(computerWord);
 
-let arrayWordComputer = computerWord.split(""); //  arrayWordComputer compare letters
-console.log(arrayWordComputer);
+let ComputerWordInArray = computerWord.split(""); //  arrayWordComputer compare letters
+//console.log(arrayWordComputer);
 
 let wordToFind = computerWord.split(""); // wordUser
-console.log(wordToFind);
+//console.log(wordToFind);
 
-replaceUnderscore(wordToFind); // change letter to underscore
+replaceByUnderscore(wordToFind); // change letter to underscore
 
-while(score !==0 && winner(wordToFind) === true) {
-    letter = prompt("Choose a letter.\nYour score is " + score + "\n" + wordToFind);
-    console.log(addLetterUser(wordToFind));
-    console.log(winner(wordToFind));
-    score = scores(score);
+while(score !==0 && restOfUnderscore(wordToFind) === true) {
+    letterChooseByUser = prompt("Choose a letter.\nYour score is " + score + "\n" + wordToFind);
+    letterChooseByUser = letterChooseByUser.toLowerCase();
+    addLetterUser(wordToFind);
+    restOfUnderscore(wordToFind); 
+    score = computeScores(score);
+    if(score === 0) {
+        alert("you loose")
+    }
+    else if (restOfUnderscore(wordToFind) !== true) {
+        alert("you win")
+    }
 }
-
