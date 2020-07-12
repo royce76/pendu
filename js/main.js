@@ -32,14 +32,23 @@ let scores = (datascore) => {
     }
 }
 
-addLetterUser = (wordUser) => {
+let addLetterUser = (wordUser) => {
     for(let h = 0;h<wordUser.length;h++) { // transform wordToFind in underscore
         if(arrayWordComputer[h] === letter) {
             wordUser[h] = letter;
         }
     }
     return wordUser
-} 
+}
+
+let winner = (userWord) => {
+    if(userWord.includes("_"+" ")) {
+        return true
+    }
+    else {
+        return alert("You win")
+    }
+}
 //
 //
 //------code------
@@ -56,9 +65,10 @@ console.log(wordToFind);
 
 replaceUnderscore(wordToFind); // change letter to underscore
 
-while(score !== 0 && wordToFind !== computerWord ) {
+while(score !==0 && winner(wordToFind) === true) {
     letter = prompt("Choose a letter.\nYour score is " + score + "\n" + wordToFind);
-    addLetterUser(wordToFind);
+    console.log(addLetterUser(wordToFind));
+    console.log(winner(wordToFind));
     score = scores(score);
 }
 
